@@ -33,4 +33,8 @@ describe("DockingStation", function() {
     expect(function() {dockingStation.dockBike(bike);} ).toThrow(new Error("Docking station full - please find another one"));
   });
 
+  it("should not be possible to release a bike if the docking station empty", function() {
+    expect(function() {dockingStation.releaseBike();} ).toThrow(new Error("Docking station empty - please find another one"));
+  });
+
 });
