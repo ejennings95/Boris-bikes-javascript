@@ -9,4 +9,8 @@ describe("Bike", function() {
     expect(bike).toBeDefined();
   });
 
+  it("should start in working condition", function() {
+    expect(bike.showCondition()).toEqual('Working');
+  });
+
 });
