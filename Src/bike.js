@@ -9,3 +9,7 @@ Bike.prototype.showCondition = function(){
 Bike.prototype.isBroken = function(){
   this._condition = 'Broken';
 };
+
+Bike.prototype.isWorking = function(){
+  this._condition = 'Working';
+};
