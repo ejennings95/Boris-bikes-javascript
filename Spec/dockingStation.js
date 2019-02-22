@@ -22,4 +22,8 @@ describe("DockingStation", function() {
     expect(dockingStation.showDockedBikes()).toEqual([]);
   });
 
+  it("should be possible to see the capacity of the docking station", function() {
+    expect(dockingStation._capacity).toEqual(5);
+  });
+
 });
