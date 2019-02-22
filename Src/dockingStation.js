@@ -1,5 +1,6 @@
-function DockingStation() {
+function DockingStation(capacity = 5) {
   this._dockedBikes = [];
+  this._capacity = 5;
 };
 
 DockingStation.prototype.showDockedBikes = function(){
