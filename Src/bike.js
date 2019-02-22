@@ -5,3 +5,7 @@ function Bike() {
 Bike.prototype.showCondition = function(){
   return this._condition;
 };
+
+Bike.prototype.isBroken = function(){
+  this._condition = 'Broken';
+};
