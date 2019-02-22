@@ -18,4 +18,9 @@ describe("Bike", function() {
     expect(bike.showCondition()).toEqual('Broken');
   });
 
+  it("should be possible to set the bike condition to working", function() {
+    bike.isWorking();
+    expect(bike.showCondition()).toEqual('Working');
+  });
+
 });
