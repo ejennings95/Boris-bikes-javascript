@@ -26,4 +26,11 @@ describe("DockingStation", function() {
     expect(dockingStation._capacity).toEqual(5);
   });
 
+  it("should be possible to have a capacity on the docking station", function() {
+    for (var i = 0; i < dockingStation._capacity; i++) {
+      dockingStation.dockBike(bike);
+    }
+    expect(function() {dockingStation.dockBike(bike);} ).toThrow(new Error("Docking station full - please find another one"));
+  });
+
 });
