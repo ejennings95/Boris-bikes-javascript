@@ -1,10 +1,12 @@
 describe("DockingStation", function() {
   var dockingStation;
   var bike;
+  var brokenBike;
 
   beforeEach(function() {
     dockingStation = new DockingStation();
     bike = jasmine.createSpy('bike');
+    brokenBike = jasmine.createSpyObj('brokenBike', ['showCondition']);
   });
 
   it("should start with dockedbikes equating to an empty array", function() {
@@ -35,6 +37,11 @@ describe("DockingStation", function() {
 
   it("should not be possible to release a bike if the docking station empty", function() {
     expect(function() {dockingStation.releaseBike();} ).toThrow(new Error("Docking station empty - please find another one"));
+  });
+
+  it("should not be possible to release a bike if it is broken", function() {
+    (brokenBike.showCondition).and.returnValue('Broken');
+    expect(function() {dockingStation.dockBike(brokenBike);} ).toThrow(new Error("Bike is Broken and cannot be released - try another one!"));
   });
 
 });
