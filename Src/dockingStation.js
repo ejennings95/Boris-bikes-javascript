@@ -9,3 +9,7 @@ DockingStation.prototype.showDockedBikes = function(){
 DockingStation.prototype.dockBike = function(bike = new Bike){
   this._dockedBikes.push(bike);
 };
+
+DockingStation.prototype.releaseBike = function(){
+  this._dockedBikes.pop();
+};
