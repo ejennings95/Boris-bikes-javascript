@@ -16,5 +16,10 @@ describe("DockingStation", function() {
     expect(dockingStation.showDockedBikes()).toEqual([bike]);
   });
 
+  it("should be possible to release a bike", function() {
+    dockingStation.dockBike(bike);
+    dockingStation.releaseBike();
+    expect(dockingStation.showDockedBikes()).toEqual([]);
+  });
 
 });
