@@ -8,6 +8,9 @@ DockingStation.prototype.showDockedBikes = function(){
 };
 
 DockingStation.prototype.dockBike = function(bike = new Bike){
+  if (this._dockedBikes.length >= this._capacity){
+    throw new Error("Docking station full - please find another one");
+  }
   this._dockedBikes.push(bike);
 };
 
