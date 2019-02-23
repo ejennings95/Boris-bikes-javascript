@@ -23,3 +23,8 @@ DockingStation.prototype.releaseBike = function(){
   }
   this._dockedBikes.pop();
 };
+
+DockingStation.prototype.shuffleBikes = function (shuffleArray = new ShuffleArray(this._dockedBikes)) {
+  shuffleArray.shuffle();
+  this._dockedBikes = shuffleArray._array;
+};
