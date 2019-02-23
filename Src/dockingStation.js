@@ -8,9 +8,7 @@ DockingStation.prototype.showDockedBikes = function(){
 };
 
 DockingStation.prototype.dockBike = function(bike = new Bike){
-  if (this._dockedBikes.length >= this._capacity){
-    throw new Error("Docking station full - please find another one");
-  }
+  if (this.isFull()) { throw new Error("Docking station full - please find another one"); }
   this._dockedBikes.push(bike);
 };
 
@@ -19,14 +17,18 @@ DockingStation.prototype.releaseBike = function(){
     throw new Error("Docking station empty - please find another one");
   } else {
     this.shuffleBikes();
+    if (this._dockedBikes[this._dockedBikes.length -1].showCondition() === 'Broken'){
+      throw new Error("Bike is Broken and cannot be released - try another one!");
+    }
+    this._dockedBikes.pop();
   }
-  if (this._dockedBikes[this._dockedBikes.length -1].showCondition() === 'Broken'){
-    throw new Error("Bike is Broken and cannot be released - try another one!");
-  }
-  this._dockedBikes.pop();
 };
 
 DockingStation.prototype.shuffleBikes = function (shuffleArray = new ShuffleArray(this._dockedBikes)) {
   shuffleArray.shuffle();
   this._dockedBikes = shuffleArray._array;
+};
+
+DockingStation.prototype.isFull = function () {
+  return (this._dockedBikes.length >= this._capacity);
 };
