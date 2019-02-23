@@ -55,4 +55,13 @@ describe("DockingStation", function() {
     expect(shuffleArray.shuffle).toHaveBeenCalled();
   });
 
+  it("should shuffle the bikes in the array before releasing a bike", function() {
+    (brokenBike.showCondition).and.returnValue('Broken');
+    dockingStation.dockBike(brokenBike);
+    (workingBike.showCondition).and.returnValue('Working');
+    dockingStation.dockBike(workingBike);
+    dockingStation.releaseBike();
+    expect(shuffleArray.shuffle).toHaveBeenCalled();
+  });
+
 });
