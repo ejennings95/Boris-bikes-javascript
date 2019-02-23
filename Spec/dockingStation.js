@@ -34,7 +34,7 @@ describe("DockingStation", function() {
   });
 
   it("should be possible to see the capacity of the docking station using a method", function() {
-    expect(dockingStation.showCapacity).toEqual(5);
+    expect(dockingStation.showCapacity()).toEqual(5);
   });
 
   it("should be possible to have a capacity on the docking station", function() {

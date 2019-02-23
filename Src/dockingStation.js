@@ -7,6 +7,10 @@ DockingStation.prototype.showDockedBikes = function(){
   return this._dockedBikes;
 };
 
+DockingStation.prototype.showCapacity = function(){
+  return this._capacity;
+};
+
 DockingStation.prototype.dockBike = function(bike = new Bike){
   if (this.isFull()) { throw new Error("Docking station full - please find another one"); }
   this._dockedBikes.push(bike);
