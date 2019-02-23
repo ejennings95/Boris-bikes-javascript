@@ -2,13 +2,15 @@ describe("DockingStation", function() {
   var dockingStation;
   var bike;
   var brokenBike;
-  var biketest;
+  var shuffleArray;
 
   beforeEach(function() {
     dockingStation = new DockingStation();
     bike = jasmine.createSpy('bike');
     brokenBike = jasmine.createSpyObj('brokenBike', ['showCondition']);
     workingBike = jasmine.createSpyObj('workingBike', ['showCondition']);
+    workingBike2 = jasmine.createSpyObj('workingBike', ['showCondition']);
+    shuffleArray = jasmine.createSpyObj('shuffleArray', ['shuffle']);
   });
 
   it("should start with dockedbikes equating to an empty array", function() {
@@ -46,6 +48,11 @@ describe("DockingStation", function() {
     (brokenBike.showCondition).and.returnValue('Broken');
     dockingStation.dockBike(brokenBike);
     expect(function() {dockingStation.releaseBike();} ).toThrow(new Error("Bike is Broken and cannot be released - try another one!"));
+  });
+
+  it("should shuffle the bikes in the array", function() {
+    dockingStation.shuffleBikes(shuffleArray);
+    expect(shuffleArray.shuffle).toHaveBeenCalled();
   });
 
 });

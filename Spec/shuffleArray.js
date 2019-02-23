@@ -8,8 +8,6 @@ describe("ShuffleArray", function() {
   });
 
   it("should shuffle the order of the array", function() {
-    console.log(array);
-    console.log(shuffleArray.shuffle());
     expect(shuffleArray.shuffle()).not.toEqual([1, 2, 3, 4, 5]);
   });
 });
