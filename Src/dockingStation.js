@@ -13,15 +13,12 @@ DockingStation.prototype.dockBike = function(bike = new Bike){
 };
 
 DockingStation.prototype.releaseBike = function(){
-  if (this._dockedBikes.length === 0){
-    throw new Error("Docking station empty - please find another one");
-  } else {
+  if (this.isEmpty()) { throw new Error("Docking station empty - please find another one"); }
     this.shuffleBikes();
     if (this._dockedBikes[this._dockedBikes.length -1].showCondition() === 'Broken'){
       throw new Error("Bike is Broken and cannot be released - try another one!");
     }
     this._dockedBikes.pop();
-  }
 };
 
 DockingStation.prototype.shuffleBikes = function (shuffleArray = new ShuffleArray(this._dockedBikes)) {
@@ -31,4 +28,8 @@ DockingStation.prototype.shuffleBikes = function (shuffleArray = new ShuffleArra
 
 DockingStation.prototype.isFull = function () {
   return (this._dockedBikes.length >= this._capacity);
+};
+
+DockingStation.prototype.isEmpty = function () {
+  return (this._dockedBikes.length === 0);
 };
