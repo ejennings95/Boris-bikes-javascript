@@ -18,5 +18,8 @@ DockingStation.prototype.releaseBike = function(){
   if (this._dockedBikes.length === 0){
     throw new Error("Docking station empty - please find another one");
   }
+  if (this._dockedBikes[this._dockedBikes.length -1].showCondition() === 'Broken'){
+    throw new Error("Bike is Broken and cannot be released - try another one!");
+  }
   this._dockedBikes.pop();
 };
