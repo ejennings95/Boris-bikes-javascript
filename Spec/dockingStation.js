@@ -60,8 +60,9 @@ describe("DockingStation", function() {
     dockingStation.dockBike(brokenBike);
     (workingBike.showCondition).and.returnValue('Working');
     dockingStation.dockBike(workingBike);
+    spyOn(dockingStation, 'shuffleBikes')
     dockingStation.releaseBike();
-    expect(shuffleArray.shuffle).toHaveBeenCalled();
+    expect(dockingStation.shuffleBikes).toHaveBeenCalled();
   });
 
 });

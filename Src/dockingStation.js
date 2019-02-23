@@ -17,6 +17,8 @@ DockingStation.prototype.dockBike = function(bike = new Bike){
 DockingStation.prototype.releaseBike = function(){
   if (this._dockedBikes.length === 0){
     throw new Error("Docking station empty - please find another one");
+  } else {
+    this.shuffleBikes();
   }
   if (this._dockedBikes[this._dockedBikes.length -1].showCondition() === 'Broken'){
     throw new Error("Bike is Broken and cannot be released - try another one!");
