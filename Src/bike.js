@@ -8,8 +8,10 @@ Bike.prototype.showCondition = function(){
 
 Bike.prototype.isBroken = function(){
   this._condition = 'Broken';
+  return "The bike has been reported as broken"
 };
 
 Bike.prototype.isWorking = function(){
   this._condition = 'Working';
+  return "The bike is in working condition" 
 };
