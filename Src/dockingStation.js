@@ -1,6 +1,6 @@
 function DockingStation(capacity = 5) {
   this._dockedBikes = [];
-  this._capacity = 5;
+  this._capacity = capacity;
 };
 
 DockingStation.prototype.showDockedBikes = function(){
@@ -14,6 +14,7 @@ DockingStation.prototype.showCapacity = function(){
 DockingStation.prototype.dockBike = function(bike = new Bike){
   if (this.isFull()) { throw new Error("Docking station full - please find another one"); }
   this._dockedBikes.push(bike);
+  return "Thank you! You have sucessfully docked your Bike."
 };
 
 DockingStation.prototype.releaseBike = function(){
@@ -21,6 +22,7 @@ DockingStation.prototype.releaseBike = function(){
   this.shuffleBikes();
   if (this.isBroken()){ throw new Error("Bike is Broken and cannot be released - try another one!"); }
   this._dockedBikes.pop();
+  return "Enjoy your ride! Please update the bikes condition if you have any problems."
 };
 
 DockingStation.prototype.shuffleBikes = function (shuffleArray = new ShuffleArray(this._dockedBikes)) {
